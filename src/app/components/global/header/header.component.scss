@@ -1,0 +1,36 @@
+@import '../../../../assets/scss/global.scss';
+
+header {
+  position: relative;
+  background: $white;
+  padding: 0;
+  border-bottom: 1px solid $link-orange-hover;
+  .ngfb-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    .ngfb-logo {
+      font-weight: bold;
+      padding: 1rem;
+    }
+    .ngfb-menu-container {
+      position: relative;
+      .ngfb-menu {
+        position: absolute;
+        z-index: 1;
+        background: $menu-white;
+        display: none;
+        a {
+          width: 100%;
+          min-width: 8rem;
+        }
+      }
+
+      &:hover {
+        .ngfb-menu {
+          display: block;
+        }
+      }
+    }
+  }
+}

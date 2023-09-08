@@ -1,0 +1,39 @@
+<div class="ngfb-homepage">
+    <div class="ngfb-product-list-wrapper">
+      <ul class="ngfb-food-list">
+        <li class="ngfb-food-info" *ngFor="let food of foods">
+          <a class="ngfb-food-info-link" routerLink="/food/{{food.id}}">
+            <img [src]="food.imageUrl" [alt]="food.name" />
+            <div class="ngfb-content">
+              <div class="ngfb-food-name">
+                {{food.name}}
+              </div>
+              <span [class]="'ngfb-favorite ' + (food.favorite ? '': 'ngfb-not-favorite')">
+                <i class="fa fa-heart"></i>
+              </span>
+              <div class="ngfb-stars">
+                <li *ngFor="let rating of ratings">
+                  <i class="fa fa-star"></i>
+                </li>
+              </div>
+              <div class="ngfb-product-item-footer">
+                <div class="ngfb-footer-1">
+                  <div class="ngfb-origins">
+                    <span class="ngfb-origins-desc" *ngFor="let origin of food.origins">
+                        {{origin}}
+                    </span>
+                  </div>
+                  <div class="ngfb-cook-time">
+                    <span><i class="fa fa-clock-o"></i>{{food.cookTime}}</span>
+                  </div>
+                </div>
+                <div class="ngfb-price">
+                  <span>{{food.price | currency}}</span>
+                </div>
+              </div>
+            </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
