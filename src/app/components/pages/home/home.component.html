@@ -3,7 +3,7 @@
     <div class="ngfb-product-list-wrapper">
       <ul class="ngfb-food-list">
         <li class="ngfb-food-info" *ngFor="let food of foods">
-          <a class="ngfb-food-info-link" routerLink="/food/{{food.id}}">
+          <a class="ngfb-food-info-link" routerLink="/food/{{food.name}}/{{food.id}}">
             <img [src]="food.imageUrl" [alt]="food.name" />
             <div class="ngfb-content">
               <div class="ngfb-food-name">
@@ -12,7 +12,7 @@
               <span [class]="'ngfb-favorite ' + (food.favorite ? '': 'ngfb-not-favorite')">
                 <i class="fa fa-heart"></i>
               </span>
-              <div class="ngfb-stars">
+              <div class="ngfb-rating">
                 <li *ngFor="let rating of ratings">
                   <i class="fa fa-star"></i>
                 </li>

@@ -1,0 +1,47 @@
+<div *ngIf="food" class="ngfb-food-detail-container">
+  <img class="ngfb-food-image" [src]="food.imageUrl" [alt]="food.name" />
+  <div class="ngfb-details">
+    <div class="ngfb-header">
+      <span class="ngfb-name">
+        {{food.name}}
+      </span>
+      <span [class]="'ngfb-favorite ' + (food.favorite ? '': 'ngfb-not-favorite')">
+        <i class="fa fa-heart"></i>
+      </span>
+    </div>
+    <div class="ngfb-rating-wrapper">
+      <ul class="ngfb-rating">
+        <li *ngFor="let rating of ratings">
+          <i class="fa fa-star"></i>
+        </li>
+      </ul>
+    </div>
+
+    <div class="ngfb-origins">
+      <span class="ngfb-origins-desc" *ngFor="let origin of food.origins">
+        {{origin}}
+      </span>
+    </div>
+
+    <div class="ngfb-tags">
+      <a *ngFor="let tag of food.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="ngfb-cook-time">
+      <span>
+        Time to cook about <strong>{{food.cookTime}}</strong> minutes
+      </span>
+    </div>
+
+    <div class="ngfb-price">
+      <span>
+        {{food.price | currency}}
+      </span>
+    </div>
+
+    <button class="ngfb-button ngfb-primary-button" (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>

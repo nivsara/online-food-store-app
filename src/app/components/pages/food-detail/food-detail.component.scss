@@ -1,0 +1,91 @@
+@import '../../../../assets/scss/global.scss';
+
+.ngfb-food-detail-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 3rem;
+  .ngfb-food-image {
+    border-radius: 3rem;
+    flex: 1 0;
+    object-fit: cover;
+    height: 35rem;
+    margin: 1rem;
+  }
+  .ngfb-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex:1 0;
+    padding: 2rem;
+    color: $black;
+    margin-left: 1rem;
+    .ngfb-header{
+      display: flex;
+      justify-content: space-between;
+      .ngfb-name{
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .ngfb-favorite{
+        color: $link-orange-hover;
+        font-size: 2.5rem;
+        &.ngfb-not-favorite {
+          color: $grey;
+        }
+      }
+
+      .ngfb-favorite.not{
+        color: $grey;
+      }
+    }
+
+    .ngfb-rating {
+      .fa {
+        color: $link-orange-hover;
+        &:hover {
+          color: $grey;
+        }
+      }
+    }
+
+    .ngfb-origins{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .ngfb-origins span{
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+      border-radius: 2rem;
+    }
+
+    .ngfb-cook-time{
+      margin-top: 1rem;
+      span{
+        padding: 0.6rem 2rem 0.6rem 0;
+        border-radius: 10rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    .ngfb-price{
+      font-size: 1.8rem;
+      margin: 2rem 2rem 2rem 0;
+      color: $text-bg-orange;
+      font-weight: bold;
+      &::before{
+        content: "Price: ";
+      }
+    }
+  }
+}
+
+.ngfb-container > *{
+  min-width: 25rem;
+  max-width: 40rem;
+}

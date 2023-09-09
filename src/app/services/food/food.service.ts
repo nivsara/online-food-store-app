@@ -13,7 +13,11 @@ export class FoodService {
     return sample_foods;
   }
 
-  getAllFoodsbySearch(searchTerm: string) {
+  getAllFoodsbySearch(searchTerm: string): Food[] {
     return this.getAll().filter((item: Food) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  }
+
+  getFoodById( id: string) : Food {
+    return this.getAll().find((item: Food) => item.id === id) ?? new Food;
   }
 }

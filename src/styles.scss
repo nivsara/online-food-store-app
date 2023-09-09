@@ -36,6 +36,10 @@ ul {
   display: flex;
   list-style-type: none;
   margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
 }
 
 ul a {
@@ -49,4 +53,52 @@ a span {
   padding: 0.1rem 0.45rem;
   border-radius: 100rem;
   font-size: 0.9rem;
+}
+
+.ngfb-rating {
+  margin-bottom: 0.2rem;
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 5px;
+}
+
+.ngfb-button {
+  &.ngfb-primary-button{
+    color: white;
+    background: #e72929;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    outline: none;
+    &:hover{
+      opacity: 0.9;
+      cursor: pointer;
+    }
+  }
+}
+
+.ngfb-origins-desc {
+  border-radius: 2rem;
+  background-color: $menu-white;
+  display: inline-block;
+  font-size: 0.8rem;
+  color: $text-bg-orange;
+  margin-right: 0.3rem;
+  padding: 0 0.5rem;
+  margin-top: 0.2rem;
+  text-transform: capitalize;
+}
+
+.ngfb-tags{
+  display: flex;
+  flex-wrap: wrap;
+  a{
+    padding: 0.3rem 1rem;
+    margin: 0.2rem 0.15rem;
+    border-radius: 10rem;
+    font-weight: 600;
+    background: $text-bg-orange;
+    color: $white;
+  }
 }

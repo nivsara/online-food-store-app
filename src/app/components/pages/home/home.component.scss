@@ -48,29 +48,11 @@
                   }
                 }
 
-                .ngfb-stars {
-                  margin-bottom: 0.2rem;
-                  margin-top: 0.5rem;
-                  display: flex;
-                  gap: 5px;
-                }
-
                 .ngfb-product-item-footer {
                   .ngfb-footer-1 {
                     display: flex;
                     .ngfb-origins {
                       flex: 60%;
-                      .ngfb-origins-desc {
-                        border-radius: 2rem;
-                        background-color: $menu-white;
-                        display: inline-block;
-                        font-size: 0.8rem;
-                        color: $text-bg-orange;
-                        margin-right: 0.3rem;
-                        padding: 0 0.5rem;
-                        margin-top: 0.2rem;
-                        text-transform: capitalize;
-                      }
                     }
 
                     .ngfb-cook-time {
