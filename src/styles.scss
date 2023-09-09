@@ -93,7 +93,7 @@ a span {
 .ngfb-tags{
   display: flex;
   flex-wrap: wrap;
-  a{
+  a {
     padding: 0.3rem 1rem;
     margin: 0.2rem 0.15rem;
     border-radius: 10rem;
@@ -101,4 +101,9 @@ a span {
     background: $text-bg-orange;
     color: $white;
   }
+}
+
+.ngfb-page-title {
+  margin: 1.5rem;
+  margin-top: 0.5rem;
 }

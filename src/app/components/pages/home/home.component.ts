@@ -16,7 +16,13 @@ export class HomeComponent implements OnInit {
   constructor(private foodService: FoodService, activatedRoute: ActivatedRoute) {
     this.foods = this.foodService.getAll();
     activatedRoute.params.subscribe((param: any)=>{
-        this.foods = param.searchTerm ? this.foodService.getAllFoodsbySearch(param.searchTerm): this.foodService.getAll();
+      if(param.searchTerm) {
+        this.foods = this.foodService.getAllFoodsbySearch(param.searchTerm);
+      } else if (param.tag) {
+        this.foods = this.foodService.getFoodByTag(param.tag);
+      } else {
+        this.foods = this.foodService.getAll();
+      }
     });
     this.ratings = Array(this.ratingStars)
       .fill(0)

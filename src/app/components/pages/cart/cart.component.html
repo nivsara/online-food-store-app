@@ -1,0 +1,43 @@
+<div class="ngfb-page-title">
+  <h1>Cart: {{cart.items.length}} Items</h1>
+</div>
+<div *ngIf="cart && cart.items.length" class="ngfb-cart-container">
+  <ul class="ngfb-cart-items">
+    <li class="ngfb-cart-item" *ngFor="let cartItem of cart.items">
+      <div class="ngfb-item-info ngfb-item-image-wrapper">
+        <img class="ngfb-item-image" [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+      </div>
+      <div class="ngfb-item-info ngfb-item-link-wrapper">
+        <a class="ngfb-item-link" routerLink="/food/{{cartItem.food.id}}">
+          {{cartItem.food.name}}
+        </a>
+      </div>
+      <div class="ngfb-item-info ngfb-qty-selector" >
+        <select #quantitySelect [value]="cartItem.quantity" (change)="changeQuantity(cartItem, quantitySelect.value)">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="ngfb-item-info ngfb-item-price">
+        {{cartItem.price | currency}}
+      </div>
+
+      <div class="ngfb-item-info ngfb-cart-remove-btn">
+        <button class="ngfb-remove-button" (click)="removeItemFromCart(cartItem)">
+          Remove
+        </button>
+      </div>
+    </li>
+  </ul>
+  <div class="ngfb-checkout">
+    <div class="ngfb-cart-info" >
+      <div class="ngfb-foods-count">{{cart.totalCount}}</div>
+      <div class="ngfb-total-price">{{cart.totalPrice|currency}}</div>
+    </div>
+
+    <a class="ngfb-checkout-link" routerLink="/checkout">Proceed to Checkout</a>
+  </div>
+</div>
