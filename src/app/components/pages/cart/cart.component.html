@@ -1,6 +1,9 @@
 <div class="ngfb-page-title">
   <h1>Cart: {{cart.items.length}} Items</h1>
 </div>
+<app-results-not-found
+  [visible]="!cart || cart.items.length === 0"
+></app-results-not-found>
 <div *ngIf="cart && cart.items.length" class="ngfb-cart-container">
   <ul class="ngfb-cart-items">
     <li class="ngfb-cart-item" *ngFor="let cartItem of cart.items">

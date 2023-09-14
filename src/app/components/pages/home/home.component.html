@@ -1,6 +1,10 @@
 <div class="ngfb-homepage">
   <app-search></app-search>
   <app-tags></app-tags>
+  <app-results-not-found
+  [visible]="!foods || foods.length === 0"
+  [notFoundMessage]="'Oops! Looks like we don\'t have the one you are looking for!'"
+></app-results-not-found>
     <div class="ngfb-product-list-wrapper">
       <ul class="ngfb-food-list">
         <li class="ngfb-food-info" *ngFor="let food of foods">
