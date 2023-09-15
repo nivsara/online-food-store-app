@@ -1,8 +1,8 @@
 <app-results-not-found
-[visible]="!food.id"
+[visible]="!food"
 [notFoundMessage]="'We don\'t have this item right now!'"
 ></app-results-not-found>
-<div *ngIf="food.id" class="ngfb-food-detail-container">
+<div *ngIf="food" class="ngfb-food-detail-container">
   <img class="ngfb-food-image" [src]="food.imageUrl" [alt]="food.name" />
   <div class="ngfb-details">
     <div class="ngfb-header">

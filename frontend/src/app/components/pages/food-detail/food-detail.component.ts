@@ -16,7 +16,9 @@ export class FoodDetailComponent implements OnInit {
 
   constructor(activatedRoute: ActivatedRoute, private foodService: FoodService, private cartService: CartService) {
     activatedRoute.params.subscribe((params) => {
-      this.food = this.foodService.getFoodById(params.name, params.id);
+      this.foodService.getFoodById(params.id).subscribe((food: Food) => {
+        this.food = food;
+      });
     })
     this.ratings = Array(this.ratingStars)
       .fill(0)
