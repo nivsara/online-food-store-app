@@ -10,6 +10,8 @@ import { FoodDetailComponent } from './components/pages/food-detail/food-detail.
 import { TagsComponent } from './components/global/tags/tags.component';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { ResultsNotFoundComponent } from './components/global/results-not-found/results-not-found.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { ResultsNotFoundComponent } from './components/global/results-not-found/
     FoodDetailComponent,
     TagsComponent,
     CartComponent,
-    ResultsNotFoundComponent
+    ResultsNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

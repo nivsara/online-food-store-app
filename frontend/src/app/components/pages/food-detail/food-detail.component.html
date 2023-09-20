@@ -1,7 +1,5 @@
-<app-results-not-found
-[visible]="!food"
-[notFoundMessage]="'We don\'t have this item right now!'"
-></app-results-not-found>
+<app-results-not-found [visible]="!food"
+  [notFoundMessage]="'We don\'t have this item right now!'"></app-results-not-found>
 <div *ngIf="food" class="ngfb-food-detail-container">
   <img class="ngfb-food-image" [src]="food.imageUrl" [alt]="food.name" />
   <div class="ngfb-details">
@@ -45,7 +43,9 @@
       </span>
     </div>
 
-    <button class="ngfb-button ngfb-primary-button" (click)="addToCart()">Add To Cart</button>
+    <div class="ngfb-button-group">
+      <button class="ngfb-button ngfb-primary-button" (click)="addToCart()">Add To Cart</button>
+    </div>
 
   </div>
 </div>

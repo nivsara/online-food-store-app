@@ -1,0 +1,23 @@
+@import '../../../../assets/scss/global.scss';
+
+.ngfb-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 3rem;
+  .ngfb-login-form-wrapper{
+    width: 28rem;
+    .ngfb-login-form{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .ngfb-register-link{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  }
