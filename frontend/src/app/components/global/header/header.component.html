@@ -4,14 +4,14 @@
     <nav>
       <ul>
         <li>
-          <a routerLink="/login" class="ngfb-login">Login</a>
+          <a *ngIf="!isLoggedIn" routerLink="/login" class="ngfb-login">Login</a>
         </li>
-        <li class="ngfb-menu-container">
-          <a routerLink="/dashboard" class="ngfb-login">John Doe</a>
+        <li *ngIf="isLoggedIn" class="ngfb-menu-container">
+          <a routerLink="/dashboard" class="ngfb-login">{{user.name}}</a>
           <div class="ngfb-menu">
               <a routerLink="/profile">Profile</a>
               <a routerLink="/orders">Orders</a>
-              <a>Logout</a>
+              <a (click)="logout()">Logout</a>
           </div>
         </li>
         <li>
