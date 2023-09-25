@@ -70,7 +70,7 @@ router.get("/:id", expressAsyncHandler(
 
 router.get("/tag/:tagName", expressAsyncHandler(
     async(req,res) => {
-        const foods = await FoodModel.find({tags: req.params.tagName});
+        const foods =  req.params.tagName.toLowerCase() === 'all' ? await FoodModel.find() :await FoodModel.find({tags: req.params.tagName});
         res.send(foods);
     }
 ));

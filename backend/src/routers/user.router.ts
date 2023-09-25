@@ -36,9 +36,14 @@ const generateTokenResponse = (user: any) => {
     }, 'SomeRandomText',  {
         expiresIn: "30d"
     })
-
-    user.token = token;
-    return user;
+    return {
+        id: user.id,
+        email: user.email,
+        token: token,
+        name: user.name,
+        address: user.address,
+        isAdmin: user.isAdmin
+    };
 }
 
 export default router;
