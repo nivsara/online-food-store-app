@@ -1,0 +1,66 @@
+<div class="ngfb-register-user-container">
+  <div class="ngfb-register-title">
+    <h1>Sign Up and Order your Favorite Dish!</h1>
+    <div class="ngfb-login-link-wrapper">
+      <span>Already a user?</span>&nbsp;<a class="ngfb-login-link" routerLink="/login">Login</a>
+    </div>
+  </div>
+  <div class="ngfb-register-user-form-wrapper">
+    <form [formGroup]="userRegisterForm" class="ngfb-register-user-form" (ngSubmit)="onRegister()">
+        <div class="form-group">
+          <label for="name" class="ngfb-form-label">Name</label>
+          <input class="form-control" type="text" id="name" formControlName="name" placeholder="Enter your name...">
+          <div class="ngfb-error-list" *ngIf="userRegisterFormControls.name.invalid && isSubmitted">
+            <div *ngIf="userRegisterFormControls.name.errors?.required">
+              Name is required.
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="ngfb-form-label">Email</label>
+          <input class="form-control" type="email" id="email" formControlName="email" placeholder="Enter your email...">
+          <div class="ngfb-error-list" *ngIf="userRegisterFormControls.email.invalid && isSubmitted">
+            <div *ngIf="userRegisterFormControls.email.errors?.required">
+              Email is required.
+          </div>
+          <div *ngIf="userRegisterFormControls.email.errors?.email">
+            Please enter a valid email address.
+        </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="ngfb-form-label">Password</label>
+          <input class="form-control" type="password" id="password" formControlName="password" placeholder="Enter your password...">
+          <div class="ngfb-error-list" *ngIf="userRegisterFormControls.password.invalid && isSubmitted">
+            <div *ngIf="userRegisterFormControls.password.errors?.required">
+              Password is required.
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword" class="ngfb-form-label">Confirm Password</label>
+          <input class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password...">
+          <div class="ngfb-error-list" *ngIf="userRegisterFormControls.confirmPassword.invalid && (userRegisterFormControls.confirmPassword.dirty || isSubmitted)">
+            <div *ngIf="userRegisterFormControls.confirmPassword.errors?.required">
+              Password is required.
+          </div>
+          <div *ngIf="userRegisterFormControls.confirmPassword.errors?.notMatch">
+            Passwords does not match!
+        </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address" class="ngfb-form-label">Address</label>
+          <input class="form-control" type="text" id="address" formControlName="address" placeholder="Enter your address...">
+          <div class="ngfb-error-list" *ngIf="userRegisterFormControls.address.invalid && isSubmitted">
+            <div *ngIf="userRegisterFormControls.address.errors?.required">
+              Address is required.
+          </div>
+          </div>
+        </div>
+        <div class="ngfb-button-group">
+          <button class="ngfb-button ngfb-primary-button" type="submit">Register</button>
+        </div>
+    </form>
+  </div>
+</div>

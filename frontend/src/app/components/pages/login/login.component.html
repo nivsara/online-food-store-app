@@ -2,7 +2,7 @@
   <div class="ngfb-login-form-wrapper">
     <form class="ngfb-login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email" class="ngfb-form-label">Email</label>
         <input class="form-control" type="email" id="email" formControlName="email" placeholder="Enter your email...">
         <div class="ngfb-error-list" *ngIf="loginFormControls.email.invalid && isSubmitted">
           <div *ngIf="loginFormControls.email.errors?.required">
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password" class="ngfb-form-label">Password</label>
         <input class="form-control" type="password" id="password" formControlName="password" placeholder="Enter your password...">
         <div class="ngfb-error-list" *ngIf="loginFormControls.password.invalid && isSubmitted">
           <div *ngIf="loginFormControls.password.errors?.required">
@@ -25,12 +25,12 @@
       <div class="ngfb-button-group">
         <button class="ngfb-button ngfb-primary-button" type="submit">Login</button>
       </div>
-      <!-- <div class="ngfb-register-link">
+      <div class="ngfb-register-link-wrapper">
       New user? &nbsp;
-      <a routerLink="/register" [queryParams]="{returnUrl : returnUrl}">
+      <a routerLink="/register" class="ngfb-register-link" [queryParams]="{returnUrl : returnUrl}">
         Register here
       </a>
-    </div> -->
+    </div>
     </form>
   </div>
 </div>

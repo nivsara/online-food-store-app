@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export interface User {
-    id: string;
+    id?: string;
     name: string;
     email: string;
     password: string;

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { USER_LOGIN_URL } from 'src/app/shared/constants/urls';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from 'src/app/shared/constants/urls';
 import { IUserLogin } from 'src/app/shared/interfaces/IUserLogin';
+import { IUserRegister } from 'src/app/shared/interfaces/IUserRegister';
 import { User } from 'src/app/shared/models/User';
 const USER_KEY = "isAuthenticated";
 
@@ -34,6 +35,10 @@ export class UserService {
   getAuthInfo() {
     const userInfo = localStorage.getItem(USER_KEY);
     return userInfo === "true" ? true: false
+  }
+
+  registerUser(newUser: IUserRegister): Observable<User> {
+    return this.http.post<User>(USER_REGISTER_URL, newUser);
   }
 
 }

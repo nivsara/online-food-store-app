@@ -1,0 +1,31 @@
+@import '../../../../assets/scss/global.scss';
+
+.ngfb-register-user-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    margin-top: 3rem;
+    .ngfb-register-title {
+      .ngfb-login-link-wrapper {
+        font-size: 20px;
+        .ngfb-login-link {
+          &:hover {
+            background: none;
+            color: $link-orange;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .ngfb-register-user-form-wrapper {
+      flex-basis: 50%;
+      .ngfb-register-user-form {
+        width: 70%;
+        margin: 0 auto;
+        background: $light-grey;
+        padding: 50px;
+        border-radius: 20px;
+      }
+    }
+}

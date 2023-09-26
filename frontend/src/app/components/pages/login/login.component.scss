@@ -13,10 +13,18 @@
       flex-direction: column;
       justify-content: center;
 
-      .ngfb-register-link{
+      .ngfb-register-link-wrapper{
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 15px;
+        .ngfb-register-link {
+          &:hover {
+            background: none;
+            color: $link-orange;
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

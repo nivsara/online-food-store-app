@@ -12,6 +12,7 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { ResultsNotFoundComponent } from './components/global/results-not-found/results-not-found.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterUserComponent } from './components/pages/register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TagsComponent,
     CartComponent,
     ResultsNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
