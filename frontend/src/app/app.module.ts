@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -14,6 +14,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterUserComponent } from './components/pages/register-user/register-user.component';
 import { LoaderComponent } from './components/global/loader/loader.component';
+import { LoadingInterceptor } from './shared/interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { LoaderComponent } from './components/global/loader/loader.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+  {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
