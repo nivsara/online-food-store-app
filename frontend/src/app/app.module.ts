@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterUserComponent } from './components/pages/register-user/register-user.component';
 import { LoaderComponent } from './components/global/loader/loader.component';
 import { LoadingInterceptor } from './shared/interceptor/loading.interceptor';
+import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoadingInterceptor } from './shared/interceptor/loading.interceptor';
     ResultsNotFoundComponent,
     LoginComponent,
     RegisterUserComponent,
-    LoaderComponent
+    LoaderComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

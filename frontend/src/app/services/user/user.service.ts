@@ -41,4 +41,8 @@ export class UserService {
     return this.http.post<User>(USER_REGISTER_URL, newUser);
   }
 
+  currentUser(): User {
+    return this.userSubject.value;
+  }
+
 }
