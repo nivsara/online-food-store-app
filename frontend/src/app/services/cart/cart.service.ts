@@ -36,7 +36,7 @@ export class CartService {
     cartValue.items.map((item: CartItem) => {
       if(item.food.id === foodId) {
         item.quantity = quantity;
-        item.food.price = quantity * item.food.price;
+        item.price = quantity * item.food.price;
       }
     });
     cartValue.totalCount = this.updateTotalValues(cartValue).count;
@@ -47,7 +47,7 @@ export class CartService {
   updateTotalValues(cartValue:Cart) {
     return {
       count: cartValue.items.reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0),
-      price: cartValue.items.reduce((prevTotal, currentTotal) => prevTotal + currentTotal.food.price, 0)
+      price: cartValue.items.reduce((prevTotal, currentTotal) => prevTotal + currentTotal.price, 0)
     }
   }
 

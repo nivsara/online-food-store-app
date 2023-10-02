@@ -1,0 +1,31 @@
+<table class="ngfb-oder-list-table">
+  <tr>
+    <td colspan="3">
+      <h3 class="ngfb-page-title">Order Items:</h3>
+    </td>
+  </tr>
+  <tr *ngFor="let item of order.items">
+    <td>
+      <a routerLink="/food/{{item.food.name}}/{{item.food.id}}" class="ngfb-product-link">
+        <img class="ngfb-product-img" [src]="item.food.imageUrl">
+      </a>
+    </td>
+    <td>
+      {{item.food.name}}
+    </td>
+    <td>
+      {{item.food.price | currency}}
+    </td>
+    <td>
+      {{item.quantity}}
+    </td>
+    <td>
+      {{item.price | currency}}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3"></td>
+    <td><strong>Total Items:</strong></td>
+    <td><strong>{{order.totalPrice | currency}}</strong></td>
+  </tr>
+</table>

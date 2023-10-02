@@ -1,1 +1,38 @@
-<p>checkout works!</p>
+<div class="ngfb-page-title">
+  <h1>Checkout and Enjoy!</h1>
+</div>
+<div class="ngfb-checkout-container">
+  <div class="ngfb-checkout-form-wrapper">
+    <form class="ngfb-checkout-form" [formGroup]="checkoutForm">
+      <div class="form-group">
+        <label for="name" class="ngfb-form-label">Name</label>
+        <input class="form-control" type="text" id="name" formControlName="name" placeholder="Enter your name...">
+        <div class="ngfb-error-list" *ngIf="checkoutFormCtrls.name.invalid && isSubmitted">
+          <div *ngIf="checkoutFormCtrls.name.errors?.required">
+            Name is required.
+        </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address" class="ngfb-form-label">Address</label>
+        <input class="form-control" type="text" id="address" formControlName="address" placeholder="Enter your address...">
+        <div class="ngfb-error-list" *ngIf="checkoutFormCtrls.address.invalid && isSubmitted">
+          <div *ngIf="checkoutFormCtrls.address.errors?.required">
+            Address is required.
+        </div>
+        </div>
+      </div>
+    </form>
+    <div class="ngfb-order-list-wrapper">
+      <app-item-list [order]="order"></app-item-list>
+    </div>
+  </div>
+  <div class="ngfb-checkout-map-container">
+    <div class="ngfb-page-title">
+      <h1>Choose your Location!</h1>
+    </div>
+  </div>
+  <div class="ngfb-button-group">
+    <button class="ngfb-button ngfb-primary-button" (click)="createOrder()">Checkout</button>
+  </div>
+</div>

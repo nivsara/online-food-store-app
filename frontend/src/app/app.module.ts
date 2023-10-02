@@ -16,6 +16,7 @@ import { RegisterUserComponent } from './components/pages/register-user/register
 import { LoaderComponent } from './components/global/loader/loader.component';
 import { LoadingInterceptor } from './shared/interceptor/loading.interceptor';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
+import { ItemListComponent } from './components/global/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
     LoginComponent,
     RegisterUserComponent,
     LoaderComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,

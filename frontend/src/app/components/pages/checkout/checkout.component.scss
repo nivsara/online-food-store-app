@@ -1,0 +1,27 @@
+@import '../../../../assets/scss/global.scss';
+
+.ngfb-checkout-container{
+  margin-top: 1rem;
+  display: flex;
+  margin: 0 2rem 6rem 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  .ngfb-checkout-form-wrapper,
+  .ngfb-checkout-form{
+    display: flex;
+    flex-direction: column;
+  }
+  .ngfb-checkout-form-wrapper{
+    width: 35rem;
+    margin-right: 3rem;
+    .ngfb-checkout-form{
+      width: 100%;
+    }
+  }
+  .ngfb-button-group{
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+}

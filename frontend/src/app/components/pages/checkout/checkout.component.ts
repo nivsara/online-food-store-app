@@ -13,6 +13,7 @@ export class CheckoutComponent implements OnInit {
 
   order: Order = new Order();
   checkoutForm!: FormGroup;
+  isSubmitted: boolean = false;
   constructor(private cartService: CartService,
     private userService: UserService,
     private fb: FormBuilder) {
