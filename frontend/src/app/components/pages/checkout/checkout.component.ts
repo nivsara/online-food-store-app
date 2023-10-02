@@ -23,7 +23,7 @@ export class CheckoutComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    let {name, address} = this.userService.currentUser();
+    let {name, address} = this.userService.currentUser;
     this.checkoutForm = this.fb.group({
       name: [name, [Validators.required]],
       address: [address, [Validators.required]]

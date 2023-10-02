@@ -26,6 +26,7 @@ export class UserService {
   logout() {
     this.userSubject.next(new User());
     localStorage.setItem(USER_KEY, "false");
+    window.location.reload();
   }
 
   setAuthInfo(user: User) {
@@ -41,7 +42,7 @@ export class UserService {
     return this.http.post<User>(USER_REGISTER_URL, newUser);
   }
 
-  currentUser(): User {
+  get currentUser(): User {
     return this.userSubject.value;
   }
 
