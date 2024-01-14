@@ -49,7 +49,7 @@ export const OrderSchema = new Schema<Order>(
         name:  {type: String, required: true},
         address:  {type: String, required: true},
         addressLatLng: {type: LatLngSchema, required: true},
-        paymentId:  {type: String, required: true},
+        paymentId:  {type: String},
         status: {type: String, default: OrderStatus.NEW},
         user: {type: Schema.Types.ObjectId, required: true},
     },
