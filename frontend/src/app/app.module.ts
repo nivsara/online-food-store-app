@@ -14,10 +14,11 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterUserComponent } from './components/pages/register-user/register-user.component';
 import { LoaderComponent } from './components/global/loader/loader.component';
-import { LoadingInterceptor } from './shared/interceptor/loading.interceptor';
+import { LoadingInterceptor } from './shared/interceptor/loading/loading.interceptor';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { ItemListComponent } from './components/global/item-list/item-list.component';
 import { MapComponent } from './components/global/map/map.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MapComponent } from './components/global/map/map.component';
     ReactiveFormsModule
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
