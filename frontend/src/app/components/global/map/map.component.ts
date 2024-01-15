@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import * as L from 'leaflet';
 import { LatLng, LatLngExpression, LatLngTuple, LeafletMouseEvent, Map, Marker, map, marker, tileLayer } from 'leaflet';
 import { LocationService } from 'src/app/services/location/location.service';
@@ -9,7 +9,7 @@ import { Order } from 'src/app/shared/models/Order';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnChanges {
 
   private readonly MARKER_ZOOM_LEVEL = 16;
   private readonly DEFAULT_LATLANG: LatLngTuple = [12.9716, 77.5946];
@@ -17,10 +17,29 @@ export class MapComponent implements OnInit {
   map!: Map;
   currentMarker!: Marker;
   @Input() order!: Order;
+  @Input() readonly = false;
   constructor(private locationService: LocationService) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    if(!this.order) return;
     this.initializeMap();
+    if(this.readonly && this.addressLatLng) {
+      this.showLocationOnReadOnlyMode();
+    }
+  }
+  showLocationOnReadOnlyMode() {
+    const map = this.map;
+    this.setMarker(this.addressLatLng);
+    map.setView(this.addressLatLng, this.MARKER_ZOOM_LEVEL);
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.boxZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.keyboard.disable();
+    map.off('click');
+    map.tap?.disable();
+    this.currentMarker.dragging?.disable();
   }
 
   initializeMap() {

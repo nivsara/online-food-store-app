@@ -1,0 +1,39 @@
+.ngfb-payment-container {
+  margin-top: 1rem;
+  display: flex;
+  margin: 0 2rem 6rem 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .ngfb-order-summary {
+    width: 35rem;
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    &>div {
+      display: flex;
+      margin-top: 0.7rem;
+    }
+
+    .order-info {
+      font-size: 1.2rem;
+    }
+
+    .order-info-title {
+      margin: 0 1rem 0 0;
+      flex-basis: 5rem;
+    }
+  }
+
+  .ngfb-button-group {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+
+  .buttons {
+    margin: 2rem;
+    width: 35rem;
+  }
+  }
+
+}
