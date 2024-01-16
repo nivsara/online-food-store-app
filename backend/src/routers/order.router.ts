@@ -29,7 +29,7 @@ router.post( "/create", asyncHandler(
 
 router.get( "/newOrderForCurrentUser", asyncHandler(
     async(req: any, res: any) => {
-        const order = await OrderModel.findOne({user: req.user.id, status: OrderStatus.NEW});
+        const order = await getNewCurrentOrderForUser(req);
         if (order) {
             res.send(order);
         } else {
@@ -37,5 +37,24 @@ router.get( "/newOrderForCurrentUser", asyncHandler(
         }
     })
 )
+
+router.post( "/pay", asyncHandler(
+    async(req: any, res: any) => {
+        const {paymentId} = req.body;
+        const order = await getNewCurrentOrderForUser(req);
+        if (!order) {
+            res.status(HTTP_BAD_REQUEST).send();
+            return;
+        }
+        order.paymentId = paymentId;
+        order.status = OrderStatus.PAID;
+        await order.save();
+        res.send(order._id);
+    }
+));
+
+async function getNewCurrentOrderForUser(req: any) {
+    return await OrderModel.findOne({user: req.user.id, status: OrderStatus.NEW});
+}
 
 export default router;

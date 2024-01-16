@@ -20,6 +20,7 @@ import { ItemListComponent } from './components/global/item-list/item-list.compo
 import { MapComponent } from './components/global/map/map.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentComponent } from './components/pages/payment/payment.component';
+import { PaypalComponent } from './components/global/paypal/paypal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PaymentComponent } from './components/pages/payment/payment.component';
     CheckoutComponent,
     ItemListComponent,
     MapComponent,
-    PaymentComponent
+    PaymentComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
