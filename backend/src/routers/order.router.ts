@@ -53,6 +53,17 @@ router.post( "/pay", asyncHandler(
     }
 ));
 
+router.get( "/track/:id", asyncHandler(
+    async(req: any, res: any) => {
+        const order = await OrderModel.findById(req.params.id);
+        if (order) {
+            res.send(order);
+        } else {
+            res.status(HTTP_BAD_REQUEST).send();
+        }
+    })
+)
+
 async function getNewCurrentOrderForUser(req: any) {
     return await OrderModel.findOne({user: req.user.id, status: OrderStatus.NEW});
 }

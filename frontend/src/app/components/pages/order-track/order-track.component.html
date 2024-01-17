@@ -1,0 +1,22 @@
+<div class="ngfb-page-title">
+  <h1>Track Your Order</h1>
+</div>
+<div class="ngfb-tracking-container">
+  <div class="ngfb-tracking-content" *ngIf="order">
+    <h1>Order #{{order.id}}</h1>
+    <div class="ngfb-tracking-details">
+      <div><strong>Date</strong> {{order.createdAt | date:'medium'}}</div>
+      <div><strong>Name</strong> {{order.name}}</div>
+      <div><strong>Address</strong> {{order.address}}</div>
+      <div><strong>Status</strong> {{order.status}}</div>
+      <div *ngIf="order.paymentId">
+        <strong>Payment ID</strong> {{order.paymentId}}
+      </div>
+    </div>
+    <app-item-list [order]="order"></app-item-list>
+  </div>
+
+  <div>
+    <app-map [order]="order" [readonly]="true"></app-map>
+  </div>
+</div>
