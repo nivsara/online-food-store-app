@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { OrderService } from 'src/app/services/order/order.service';
@@ -19,7 +19,8 @@ export class PaypalComponent implements OnInit {
 
   constructor(private orderService: OrderService,
     private router: Router,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private zone: NgZone) { }
 
   ngOnInit(): void {
     const self = this;
@@ -46,7 +47,9 @@ export class PaypalComponent implements OnInit {
             next: (orderId) => {
               this.cartService.clearCart();
               alert("Payment done successfully");
-              this.router.navigateByUrl('/track/' + orderId);
+              this.zone.run(() => {
+                this.router.navigateByUrl('/track/' + orderId);
+              })
             },
             error: (error) => {
             }
