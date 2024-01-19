@@ -1,0 +1,10 @@
+<div class="ngfb-rating" [ngClass]="readOnly ? 'ngfb-rating-readOnly' : ''">
+  <ul>
+    <li *ngFor="let rating of ratings">
+      <i class="fa"
+      [ngClass]="((+(foodRating) % 1 !== 0 ) ? ((rating < Math.floor(foodRating))) ? 'fa-star' : (rating === Math.floor(foodRating)) ? 'fa-star-half-o' : 'fa-star-o': ((rating < Math.floor(foodRating))) ? 'fa-star' : 'fa-star-o')">
+    </i>
+    </li>
+  </ul>
+  {{foodRating}}
+</div>

@@ -22,6 +22,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentComponent } from './components/pages/payment/payment.component';
 import { PaypalComponent } from './components/global/paypal/paypal.component';
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
+import { RatingComponent } from './components/global/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { OrderTrackComponent } from './components/pages/order-track/order-track.
     MapComponent,
     PaymentComponent,
     PaypalComponent,
-    OrderTrackComponent
+    OrderTrackComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

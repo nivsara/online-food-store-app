@@ -1,0 +1,13 @@
+@import '../../../../assets/scss/global.scss';
+
+.ngfb-rating {
+  &.ngfb-rating-readOnly {
+    pointer-events: none;
+  }
+  .fa {
+    color: $link-orange-hover;
+    &:hover {
+      color: $grey;
+    }
+  }
+}

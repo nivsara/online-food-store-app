@@ -11,14 +11,7 @@
         <i class="fa fa-heart"></i>
       </span>
     </div>
-    <div class="ngfb-rating-wrapper">
-      <ul class="ngfb-rating">
-        <li *ngFor="let rating of ratings">
-          <i class="fa fa-star"></i>
-        </li>
-      </ul>
-    </div>
-
+    <rating [foodRating]="food.stars"></rating>
     <div class="ngfb-origins">
       <span class="ngfb-origins-desc" *ngFor="let origin of food.origins">
         {{origin}}

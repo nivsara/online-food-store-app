@@ -11,8 +11,6 @@ import { Food } from 'src/app/shared/models/Food';
 })
 export class FoodDetailComponent implements OnInit {
   food!: Food;
-  ratingStars: number = 5;
-  ratings: number[];
 
   constructor(activatedRoute: ActivatedRoute, private foodService: FoodService, private cartService: CartService) {
     activatedRoute.params.subscribe((params) => {
@@ -20,9 +18,6 @@ export class FoodDetailComponent implements OnInit {
         this.food = food;
       });
     })
-    this.ratings = Array(this.ratingStars)
-      .fill(0)
-      .map((x, i) => i);
   }
 
   ngOnInit(): void {

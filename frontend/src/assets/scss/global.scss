@@ -1,2 +1,24 @@
 @import './colors.scss';
 @import "../../../node_modules/font-awesome/scss/font-awesome.scss";
+
+.ngfb-homepage {
+  .ngfb-product-list-wrapper {
+    ul {
+      &.ngfb-food-list {
+        li {
+          &.ngfb-food-info {
+            .ngfb-food-info-link {
+              &:hover {
+                .ngfb-rating {
+                  .fa {
+                    color: $white;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

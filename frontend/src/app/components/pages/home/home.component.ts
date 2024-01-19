@@ -10,9 +10,9 @@ import { Food } from 'src/app/shared/models/Food';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
   foods: Food[] = [];
-  ratingStars: number = 5;
-  ratings: number[];
+
   foodObservable: Observable<Food[]>;
   constructor(private foodService: FoodService, activatedRoute: ActivatedRoute) {
     this.foodObservable = this.foodService.getAll();
@@ -28,9 +28,6 @@ export class HomeComponent implements OnInit {
         this.foods = foods;
       })
     });
-    this.ratings = Array(this.ratingStars)
-      .fill(0)
-      .map((x, i) => i);
   }
 
   ngOnInit(): void {}

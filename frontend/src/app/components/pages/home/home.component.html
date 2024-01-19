@@ -17,11 +17,7 @@
               <span [class]="'ngfb-favorite ' + (food.favorite ? '': 'ngfb-not-favorite')">
                 <i class="fa fa-heart"></i>
               </span>
-              <div class="ngfb-rating">
-                <li *ngFor="let rating of ratings">
-                  <i class="fa fa-star"></i>
-                </li>
-              </div>
+              <rating [foodRating]="food.stars" [readOnly]="true"></rating>
               <div class="ngfb-product-item-footer">
                 <div class="ngfb-footer-1">
                   <div class="ngfb-origins">
