@@ -27,6 +27,19 @@ router.post( "/create", asyncHandler(
     }
 ));
 
+
+router.get( "/", asyncHandler(
+    async(req: any, res: any) => {
+        const orders = await OrderModel.find({user: req.user.id});
+        const sortedData = orders.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        if (orders) {
+            res.send(sortedData);
+        } else {
+            res.status(HTTP_BAD_REQUEST).send();
+        }
+    })
+)
+
 router.get( "/newOrderForCurrentUser", asyncHandler(
     async(req: any, res: any) => {
         const order = await getNewCurrentOrderForUser(req);

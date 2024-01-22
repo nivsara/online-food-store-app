@@ -35,7 +35,7 @@ router.post( "/login", expressAsyncHandler(
 
 router.post( "/register", expressAsyncHandler(
     async(req, res) => {
-        const {name, email, password, address} = req.body;
+        const {name, email, password, address, contact} = req.body;
         const user = await UserModel.findOne({email});
         if(user) {
             res.status(HTTP_BAD_REQUEST).send("Email is already registered with us!");
@@ -47,6 +47,7 @@ router.post( "/register", expressAsyncHandler(
             email: email.toLowerCase(),
             password: encryptedPassword,
             address,
+            contact,
             isAdmin: false
         }
         const dbUser = await UserModel.create(newUser);
@@ -66,8 +67,11 @@ const generateTokenResponse = (user: any) => {
         token: token,
         name: user.name,
         address: user.address,
+        contact: user.contact,
         isAdmin: user.isAdmin
     };
 }
+
+
 
 export default router;
