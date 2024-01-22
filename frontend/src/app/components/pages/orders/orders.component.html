@@ -1,0 +1,8 @@
+<div class="ngfb-page-title">
+  <h1>Your Orders!</h1>
+</div>
+<div class="ngfb-order-list-container">
+  <ng-container *ngFor="let order of orders">
+    <app-item-list [order]="order"></app-item-list>
+  </ng-container>
+  </div>

@@ -58,6 +58,15 @@
           </div>
           </div>
         </div>
+        <div class="form-group">
+          <label for="contact" class="ngfb-form-label">Contact No.</label>
+          <input class="form-control" type="text" id="contact" formControlName="contact" placeholder="Enter your contact number...">
+          <div class="ngfb-error-list" *ngIf="userRegisterFormControls.contact.invalid && isSubmitted">
+            <div *ngIf="userRegisterFormControls.contact.errors?.required">
+              Contact is required.
+          </div>
+          </div>
+        </div>
         <div class="ngfb-button-group">
           <button class="ngfb-button ngfb-primary-button" type="submit">Register</button>
         </div>

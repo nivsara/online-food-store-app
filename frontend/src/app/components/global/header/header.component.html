@@ -7,7 +7,7 @@
           <a *ngIf="!isLoggedIn" routerLink="/login" class="ngfb-login">Login</a>
         </li>
         <li *ngIf="isLoggedIn" class="ngfb-menu-container">
-          <a routerLink="/dashboard" class="ngfb-login">{{user.name}}</a>
+          <a class="ngfb-login">{{user.name}}</a>
           <div class="ngfb-menu">
               <a routerLink="/profile">Profile</a>
               <a routerLink="/orders">Orders</a>

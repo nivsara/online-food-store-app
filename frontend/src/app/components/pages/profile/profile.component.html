@@ -1,0 +1,40 @@
+<div class="ngfb-page-title">
+  <h1>Your Profile</h1>
+</div>
+<div class="ngfb-profile-container">
+  <div class="ngfb-profile-info">
+    <div class="ngfb-profile-icon">
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+    </div>
+    <div class="ngfb-user-details">
+      <div class="ngfb-username ngfb-detail-wrapper">
+        <div class="ngfb-profile-label">
+          Name:
+        </div>
+        <div class="ngfb-profile-value">
+          {{user.name}}
+        </div>
+      </div>
+      <div class="ngfb-address ngfb-detail-wrapper">
+        <div class="ngfb-profile-label">
+          Address:
+        </div>
+        <div class="ngfb-profile-value">
+          {{user.address}}
+        </div>
+      </div>
+      <div class="ngfb-contact-info ngfb-detail-wrapper">
+        <div class="ngfb-profile-label">
+          Contact No:
+        </div>
+        <div class="ngfb-profile-value">
+          {{user.contact}}
+        </div>
+      </div>
+      <div class="ngfb-edit-link">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <a routerLink="/editProfile" class="ngfb-link">Edit details</a>
+      </div>
+    </div>
+  </div>
+</div>

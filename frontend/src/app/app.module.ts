@@ -23,6 +23,8 @@ import { PaymentComponent } from './components/pages/payment/payment.component';
 import { PaypalComponent } from './components/global/paypal/paypal.component';
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
 import { RatingComponent } from './components/global/rating/rating.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
+import { OrdersComponent } from './components/pages/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { RatingComponent } from './components/global/rating/rating.component';
     PaymentComponent,
     PaypalComponent,
     OrderTrackComponent,
-    RatingComponent
+    RatingComponent,
+    ProfileComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

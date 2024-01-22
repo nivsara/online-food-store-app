@@ -150,3 +150,13 @@ a span {
   margin: 5px;
   color: $link-orange;
 }
+
+.ngfb-link {
+  color: $link-orange;
+  &:hover {
+    text-decoration: underline;
+    background: transparent;
+    color: $link-orange;
+    cursor: pointer;
+  }
+}
