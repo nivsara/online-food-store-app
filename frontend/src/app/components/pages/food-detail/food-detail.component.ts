@@ -29,9 +29,8 @@ export class FoodDetailComponent implements OnInit {
   }
 
   changeQuantity(food: Food, quantity: string) {
-    let foodItem: any = food;
-    foodItem.quantity = +quantity;
-    this.cartService.setAllProductsCartObservable({food: foodItem});
+    let foodItem: any = {food: food, quantity: +quantity, price : +quantity * food.price};
+    this.cartService.setAllProductsCartObservable(foodItem);
   }
 
 }

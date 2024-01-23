@@ -46,6 +46,7 @@ export class PaypalComponent implements OnInit {
           {
             next: (orderId) => {
               this.cartService.clearCart();
+              this.cartService.clearAllProductsCart();
               alert("Payment done successfully");
               this.zone.run(() => {
                 this.router.navigateByUrl('/track/' + orderId);

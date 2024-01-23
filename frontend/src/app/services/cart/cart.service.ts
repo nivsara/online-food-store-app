@@ -10,15 +10,39 @@ import { Food } from 'src/app/shared/models/Food';
 export class CartService {
 
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(new Cart());
-  allProductsAdded: BehaviorSubject<any> = new BehaviorSubject({items: []});
+  allProductsAdded: BehaviorSubject<any> = new BehaviorSubject([]);
 
   constructor() { }
 
   addToCart(food: Food) {
     const cartValue = this.cartSubject.value;
-    if(this.allProductsAdded.value.items.length > 0) {
-      this.allProductsAdded.value.items.forEach((item: any) => {
-        cartValue.items.push(new CartItem(item.food));
+    if(cartValue.items.length > 0) {
+      cartValue.items.map((item: CartItem) => {
+        if(item.food.id === food.id) {
+          this.allProductsAdded.value.forEach((foodItem: any) => {
+            if(foodItem.id === item.food.id) {
+              item.quantity = foodItem.quantity;
+              item.price = foodItem.price;
+            }
+          });
+        }
+      });
+    }
+
+    if(this.allProductsAdded.value.length > 0) {
+      this.allProductsAdded.value.forEach((item: any) => {
+        if(cartValue.items.length > 0) {
+          cartValue.items.map((cartItem: CartItem) => {
+            if(item.id === cartItem.food.id) {
+              cartItem.quantity = item.quantity;
+              cartItem.price = item.price;
+            } else {
+              cartValue.items.push(new CartItem(item.food, item.price, item.quantity));
+            }
+          });
+        } else {
+          cartValue.items.push(new CartItem(item.food, item.price, item.quantity));
+        }
       });
     } else {
       cartValue.items.push(new CartItem(food));
@@ -60,12 +84,16 @@ export class CartService {
     this.cartSubject.next(new Cart());
   }
 
+  clearAllProductsCart() {
+    this.allProductsAdded.next([]);
+  }
+
   getCartObservable(): Observable<Cart> {
     return this.cartSubject.asObservable();
   }
 
   setAllProductsCartObservable(value: any) {
-    this.allProductsAdded.next({items : this.allProductsAdded.value.items.push(value)});
+    this.allProductsAdded.next([...this.allProductsAdded.value, value]);
   }
 
   getCart(): Cart {
