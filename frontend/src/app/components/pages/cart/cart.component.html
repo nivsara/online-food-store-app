@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="ngfb-item-info ngfb-qty-selector" >
-        <select #quantitySelect [value]="cartItem.quantity" (change)="changeQuantity(cartItem, quantitySelect.value)">
+        <select class="ngfb-select" #quantitySelect [value]="cartItem.quantity" (change)="changeQuantity(cartItem, quantitySelect.value)">
           <option>1</option>
           <option>2</option>
           <option>3</option>

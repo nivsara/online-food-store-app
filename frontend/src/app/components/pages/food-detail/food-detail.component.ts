@@ -28,4 +28,10 @@ export class FoodDetailComponent implements OnInit {
     this.cartService.addToCart(this.food);
   }
 
+  changeQuantity(food: Food, quantity: string) {
+    let foodItem: any = food;
+    foodItem.quantity = +quantity;
+    this.cartService.setAllProductsCartObservable({food: foodItem});
+  }
+
 }

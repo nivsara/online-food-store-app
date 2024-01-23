@@ -24,6 +24,16 @@
       </a>
     </div>
 
+    <div class="ngfb-item-info ngfb-qty-selector" >
+      <select class="ngfb-select" #quantitySelect  (change)="changeQuantity(food, quantitySelect.value)">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+
     <div class="ngfb-cook-time">
       <span>
         Time to cook about <strong>{{food.cookTime}}</strong> minutes

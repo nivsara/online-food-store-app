@@ -10,14 +10,19 @@ import { Food } from 'src/app/shared/models/Food';
 export class CartService {
 
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(new Cart());
+  allProductsAdded: BehaviorSubject<any> = new BehaviorSubject({items: []});
 
   constructor() { }
 
   addToCart(food: Food) {
     const cartValue = this.cartSubject.value;
-    let cartItem = cartValue.items.find((item) => item.food.id === food.id);
-    if(cartItem) return;
-    cartValue.items.push(new CartItem(food));
+    if(this.allProductsAdded.value.items.length > 0) {
+      this.allProductsAdded.value.items.forEach((item: any) => {
+        cartValue.items.push(new CartItem(item.food));
+      });
+    } else {
+      cartValue.items.push(new CartItem(food));
+    }
     cartValue.totalCount = this.updateTotalValues(cartValue).count;
     cartValue.totalPrice = this.updateTotalValues(cartValue).price;
     this.cartSubject.next(cartValue);
@@ -57,6 +62,10 @@ export class CartService {
 
   getCartObservable(): Observable<Cart> {
     return this.cartSubject.asObservable();
+  }
+
+  setAllProductsCartObservable(value: any) {
+    this.allProductsAdded.next({items : this.allProductsAdded.value.items.push(value)});
   }
 
   getCart(): Cart {
