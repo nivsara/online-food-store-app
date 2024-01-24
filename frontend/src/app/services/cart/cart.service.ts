@@ -18,34 +18,21 @@ export class CartService {
     const cartValue = this.cartSubject.value;
     if(cartValue.items.length > 0) {
       cartValue.items.map((item: CartItem) => {
-        if(item.food.id === food.id) {
           this.allProductsAdded.value.forEach((foodItem: any) => {
-            if(foodItem.id === item.food.id) {
+            if(foodItem.food.id === item.food.id) {
               item.quantity = foodItem.quantity;
               item.price = foodItem.price;
             }
           });
-        }
-      });
-    }
-
-    if(this.allProductsAdded.value.length > 0) {
-      this.allProductsAdded.value.forEach((item: any) => {
-        if(cartValue.items.length > 0) {
-          cartValue.items.map((cartItem: CartItem) => {
-            if(item.id === cartItem.food.id) {
-              cartItem.quantity = item.quantity;
-              cartItem.price = item.price;
-            } else {
-              cartValue.items.push(new CartItem(item.food, item.price, item.quantity));
-            }
-          });
-        } else {
-          cartValue.items.push(new CartItem(item.food, item.price, item.quantity));
-        }
       });
     } else {
-      cartValue.items.push(new CartItem(food));
+      if(this.allProductsAdded.value.length > 0) {
+        this.allProductsAdded.value.forEach((foodItem: any) => {
+          cartValue.items.push(new CartItem(foodItem.food, foodItem.price, foodItem.quantity));
+        });
+      } else {
+        cartValue.items.push(new CartItem(food));
+      }
     }
     cartValue.totalCount = this.updateTotalValues(cartValue).count;
     cartValue.totalPrice = this.updateTotalValues(cartValue).price;
@@ -80,6 +67,18 @@ export class CartService {
     }
   }
 
+  checkIfAlreadyAddedInallProducts(item: any) {
+    let isAlreadyAdded = false;
+    this.allProductsAdded.value.map((foodItem: any) => {
+      if(foodItem.food.id === item.food.id) {
+        foodItem.quantity = item.quantity;
+        foodItem.price = item.price;
+        isAlreadyAdded = true;
+      }
+    });
+    return isAlreadyAdded;
+  }
+
   clearCart() {
     this.cartSubject.next(new Cart());
   }
@@ -93,7 +92,9 @@ export class CartService {
   }
 
   setAllProductsCartObservable(value: any) {
-    this.allProductsAdded.next([...this.allProductsAdded.value, value]);
+    if(!this.checkIfAlreadyAddedInallProducts(value)) {
+      this.allProductsAdded.next([...this.allProductsAdded.value, value]);
+    }
   }
 
   getCart(): Cart {
