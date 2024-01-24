@@ -17,14 +17,24 @@ export class CartService {
   addToCart(food: Food) {
     const cartValue = this.cartSubject.value;
     if(cartValue.items.length > 0) {
-      cartValue.items.map((item: CartItem) => {
-          this.allProductsAdded.value.forEach((foodItem: any) => {
-            if(foodItem.food.id === item.food.id) {
-              item.quantity = foodItem.quantity;
-              item.price = foodItem.price;
-            }
-          });
-      });
+      let alreadyAddedCartProduct: any = cartValue.items.filter((foodItem: CartItem) => foodItem.food.id === food.id);
+      let crntAddedProduct: any = this.allProductsAdded.value.filter((foodItem: CartItem) => foodItem.food.id === food.id);
+      let otherCartProducts: any = cartValue.items.filter((foodItem: CartItem) => foodItem.food.id !== food.id);
+      if(alreadyAddedCartProduct.length > 0) {
+        cartValue.items.map((item: CartItem) => {
+          if(item.food.id === food.id) {
+            item.quantity = crntAddedProduct[0].quantity;
+            item.price = crntAddedProduct[0].price;
+          }
+        });
+      } else {
+        if(crntAddedProduct.length > 0) {
+          cartValue.items = [...otherCartProducts, ...crntAddedProduct];
+        } else {
+          cartValue.items.push(new CartItem(food));
+          this.allProductsAdded.next([...this.allProductsAdded.value, new CartItem(food)]);
+        }
+      }
     } else {
       if(this.allProductsAdded.value.length > 0) {
         this.allProductsAdded.value.forEach((foodItem: any) => {
