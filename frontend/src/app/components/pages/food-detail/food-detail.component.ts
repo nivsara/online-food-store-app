@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { FoodService } from 'src/app/services/food/food.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { Food } from 'src/app/shared/models/Food';
+import { User } from 'src/app/shared/models/User';
 
 @Component({
   selector: 'app-food-detail',
@@ -11,13 +13,21 @@ import { Food } from 'src/app/shared/models/Food';
 })
 export class FoodDetailComponent implements OnInit {
   food!: Food;
+  isLoggedIn!: boolean;
 
-  constructor(activatedRoute: ActivatedRoute, private foodService: FoodService, private cartService: CartService) {
+  constructor(activatedRoute: ActivatedRoute,
+    private foodService: FoodService,
+    private cartService: CartService,
+    private userService: UserService,
+    private router: Router) {
     activatedRoute.params.subscribe((params) => {
       this.foodService.getFoodById(params.id).subscribe((food: Food) => {
         this.food = food;
       });
     })
+    this.userService.userSubjectObservable.subscribe((userInfo: User) => {
+      this.isLoggedIn = userInfo.token ? true : false;
+    });
   }
 
   ngOnInit(): void {
@@ -34,6 +44,10 @@ export class FoodDetailComponent implements OnInit {
   }
 
   updateFavs(food: Food) {
+    if(!this.isLoggedIn) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
     food.favorite = !food.favorite;
     this.foodService.updateFavorite(food).subscribe((response: any) => {
       if(response.updatedFavorite) {

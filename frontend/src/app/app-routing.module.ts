@@ -11,6 +11,7 @@ import { PaymentComponent } from './components/pages/payment/payment.component';
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { OrdersComponent } from './components/pages/orders/orders.component';
+import { FavoriteListComponent } from './components/pages/favorite-list/favorite-list.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'payment', component: PaymentComponent, canActivate: [AuthGuard]},
   {path: 'track/:orderId', component: OrderTrackComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]}
+  {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
+  {path: 'favorites', component: FavoriteListComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

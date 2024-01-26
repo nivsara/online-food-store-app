@@ -1,0 +1,90 @@
+@import '../../../../assets/scss/global.scss';
+
+.ngfb-product-list-wrapper {
+  ul {
+    &.ngfb-food-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        &.ngfb-food-info {
+          position: relative;
+          .ngfb-food-info-link {
+            min-height: 25rem;
+            width: 20rem;
+            border: 1px solid $menu-white;
+            border-radius: 1rem;
+            margin: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            color: $link-orange-hover;
+            font-weight: bold;
+
+            .ngfb-content {
+              margin-top: 0.3rem;
+              padding: 0.5rem 1rem;
+              position: relative;
+              .ngfb-favorite {
+                position: absolute;
+                top: 0.5rem;
+                right: 0rem;
+                font-size: 1.2rem;
+                color: $link-orange-hover;
+                background-color: $white;
+                &.ngfb-not-favorite {
+                  color: $grey;
+                }
+              }
+
+              .ngfb-product-item-footer {
+                .ngfb-footer-1 {
+                  display: flex;
+                  .ngfb-origins {
+                    flex: 60%;
+                  }
+
+                  .ngfb-cook-time {
+                    flex: 40%;
+                    font-size: 0.9rem;
+                    text-align: right;
+                    .fa {
+                      padding-right: 5px;
+                    }
+                  }
+                }
+                .ngfb-price {
+                  flex: 1;
+                  color: $dark-grey;
+                  margin-top: 0.7rem;
+                  font-size: 1.1rem;
+                }
+              }
+
+            }
+
+            &:hover {
+              opacity: 0.9;
+              cursor: pointer;
+              color: $white;
+              > .ngfb-button-group {
+                .ngfb-button {
+                  background: white;
+                  color: #e72929;
+                }
+              }
+            }
+          }
+
+          .ngfb-button-group {
+            padding: 20px 0;
+          }
+        }
+      }
+    }
+  }
+}

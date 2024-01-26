@@ -25,6 +25,8 @@ import { OrderTrackComponent } from './components/pages/order-track/order-track.
 import { RatingComponent } from './components/global/rating/rating.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { OrdersComponent } from './components/pages/orders/orders.component';
+import { FavoriteListComponent } from './components/pages/favorite-list/favorite-list.component';
+import { ProductListComponent } from './components/global/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { OrdersComponent } from './components/pages/orders/orders.component';
     OrderTrackComponent,
     RatingComponent,
     ProfileComponent,
-    OrdersComponent
+    OrdersComponent,
+    FavoriteListComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

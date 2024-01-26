@@ -1,0 +1,6 @@
+<div class="ngfb-page-title">
+  <h1>Your Favorites</h1>
+</div>
+<div class="ngfb-favorites-list">
+  <product-list [foods]="foods" [showFavIcon]="false" (updateFavoriteList)="updateFav($event)"></product-list>
+</div>

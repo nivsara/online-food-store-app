@@ -1,0 +1,39 @@
+<div class="ngfb-product-list-wrapper">
+  <ul class="ngfb-food-list">
+    <li class="ngfb-food-info" *ngFor="let food of foods">
+      <a class="ngfb-food-info-link" routerLink="/food/{{food.name}}/{{food.id}}">
+        <img [src]="food.imageUrl" [alt]="food.name" />
+        <div class="ngfb-content">
+          <div class="ngfb-food-name">
+            {{food.name}}
+          </div>
+          <span *ngIf="showFavIcon" [class]="'ngfb-favorite ' + (food.favorite ? '': 'ngfb-not-favorite')">
+            <i class="fa fa-heart"></i>
+          </span>
+          <rating [foodRating]="food.stars" [readOnly]="true"></rating>
+          <div class="ngfb-product-item-footer">
+            <div class="ngfb-footer-1">
+              <div class="ngfb-origins">
+                <span class="ngfb-origins-desc" *ngFor="let origin of food.origins">
+                  {{origin}}
+                </span>
+              </div>
+              <div class="ngfb-cook-time">
+                <span><i class="fa fa-clock-o"></i>{{food.cookTime}}</span>
+              </div>
+            </div>
+            <div class="ngfb-price">
+              <span>{{food.price | currency}}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div *ngIf="!showFavIcon" class="ngfb-button-group">
+        <button class="ngfb-button ngfb-primary-button" (click)="updateFav(food)">Remove</button>
+      </div>
+    </li>
+  </ul>
+  <app-results-not-found
+  [visible]="!foods || foods.length === 0"
+></app-results-not-found>
+</div>
