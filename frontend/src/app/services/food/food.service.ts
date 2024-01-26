@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FOODS_BY_SEARCH_URL, FOODS_BY_TAG_URL, FOODS_TAGS_URL, FOODS_URL, FOOD_BY_ID_URL } from 'src/app/shared/constants/urls';
+import { FOODS_BY_SEARCH_URL, FOODS_BY_TAG_URL, FOODS_TAGS_URL, FOODS_URL, FOOD_BY_ID_URL, UPDATE_FAVORITES_URL,  } from 'src/app/shared/constants/urls';
 import { Food } from 'src/app/shared/models/Food';
 import { Tag } from 'src/app/shared/models/Tag';
 import { sample_foods, sample_tags } from 'src/mock-data/food-data';
@@ -32,4 +32,9 @@ export class FoodService {
   getFoodByTag( tag: string) : Observable<Food[]> {
     return this.http.get<Food[]>(FOODS_BY_TAG_URL + tag);
   }
+
+  updateFavorite(food: Food) : Observable<Food> {
+    return this.http.post<Food>(UPDATE_FAVORITES_URL, food);
+  }
+
 }

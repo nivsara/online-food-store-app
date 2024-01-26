@@ -33,4 +33,15 @@ export class FoodDetailComponent implements OnInit {
     this.cartService.setAllProductsCartObservable(foodItem);
   }
 
+  updateFavs(food: Food) {
+    food.favorite = !food.favorite;
+    this.foodService.updateFavorite(food).subscribe((response: any) => {
+      if(response.updatedFavorite) {
+        alert("You have added this to your favorite list")
+      } else {
+        alert("You have removed this from your favorite list")
+      }
+    })
+  }
+
 }

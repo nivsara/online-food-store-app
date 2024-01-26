@@ -7,7 +7,7 @@
       <span class="ngfb-name">
         {{food.name}}
       </span>
-      <span [class]="'ngfb-favorite ' + (food.favorite ? '': 'ngfb-not-favorite')">
+      <span [class]="'ngfb-favorite ' + (food.favorite ? '': 'ngfb-not-favorite')" (click)="updateFavs(food)">
         <i class="fa fa-heart"></i>
       </span>
     </div>

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { sample_foods, sample_tags } from "../food-data";
 import expressAsyncHandler from "express-async-handler";
 import { FoodModel } from "../models/food.model";
+import { HTTP_BAD_REQUEST } from "../constants/http_status";
 
 const router = Router();
 
@@ -43,6 +44,19 @@ router.get("/seed", expressAsyncHandler(
         }
         await FoodModel.create(sample_foods);
         res.send("Seed is done!");
+    }
+));
+
+router.post( "/update-favorite", expressAsyncHandler(
+    async(req: any, res: any) => {
+        const food = req.body;
+        const updatedFood =  await FoodModel.findByIdAndUpdate(food._id, food, { new: true });
+        if (!updatedFood) {
+            res.status(HTTP_BAD_REQUEST).send();
+            return;
+        } else {
+            res.send({updatedFavorite: updatedFood.favorite});
+        }
     }
 ));
 
