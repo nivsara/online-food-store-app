@@ -27,6 +27,7 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { OrdersComponent } from './components/pages/orders/orders.component';
 import { FavoriteListComponent } from './components/pages/favorite-list/favorite-list.component';
 import { ProductListComponent } from './components/global/product-list/product-list.component';
+import { AlertBoxComponent } from './components/global/alert-box/alert-box.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProductListComponent } from './components/global/product-list/product-l
     ProfileComponent,
     OrdersComponent,
     FavoriteListComponent,
-    ProductListComponent
+    ProductListComponent,
+    AlertBoxComponent
   ],
   imports: [
     BrowserModule,
