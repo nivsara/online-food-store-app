@@ -1,5 +1,6 @@
 <app-results-not-found [visible]="!food"
   [notFoundMessage]="'We don\'t have this item right now!'"></app-results-not-found>
+  <alert-box *ngIf="alertMsg" [alertInfo]="alertMsg"></alert-box>
 <div *ngIf="food" class="ngfb-food-detail-container">
   <img class="ngfb-food-image" [src]="food.imageUrl" [alt]="food.name" />
   <div class="ngfb-details">

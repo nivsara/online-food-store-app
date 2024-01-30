@@ -43,13 +43,13 @@ export class FavoriteListComponent implements OnInit {
           this.alertMsg = {
             icon: 'info-circle',
             type: 'success',
-            msg: 'You have added item to your favorite list'
+            msg: `You have added ${food.name} to your favorite list`
           }
         } else {
           this.alertMsg = {
             icon: 'info-circle',
             type: 'success',
-            msg: 'You have removed item from your favorite list'
+            msg: `You have removed ${food.name} from your favorite list`
           }
         }
         return this.getAllFavFoods();

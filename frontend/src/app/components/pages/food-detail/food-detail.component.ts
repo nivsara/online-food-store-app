@@ -14,6 +14,7 @@ import { User } from 'src/app/shared/models/User';
 export class FoodDetailComponent implements OnInit {
   food!: Food;
   isLoggedIn!: boolean;
+  alertMsg: any=null;
 
   constructor(activatedRoute: ActivatedRoute,
     private foodService: FoodService,
@@ -51,9 +52,17 @@ export class FoodDetailComponent implements OnInit {
     food.favorite = !food.favorite;
     this.foodService.updateFavorite(food).subscribe((response: any) => {
       if(response.updatedFavorite) {
-        alert("You have added this to your favorite list")
+        this.alertMsg = {
+          icon: 'info-circle',
+          type: 'success',
+          msg: `You have added ${food.name} to your favorite list`
+        }
       } else {
-        alert("You have removed this from your favorite list")
+        this.alertMsg = {
+          icon: 'info-circle',
+          type: 'success',
+          msg: `You have removed ${food.name} from your favorite list`
+        }
       }
     })
   }
