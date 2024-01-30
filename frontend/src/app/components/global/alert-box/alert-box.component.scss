@@ -1,0 +1,31 @@
+@import '../../../../assets/scss/global.scss';
+
+.ngfb-alert {
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    .ngfb-alert-wrapper {
+      flex: 1 auto;
+      display: flex;
+      align-items: center;
+      .fa {
+        margin-right: 10px;
+      }
+    }
+    .ngfb-close-wrapper {
+      flex: 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    &.ngfb-success-msg {
+      background-color: green;
+    }
+    &.ngfb-error-msg {
+      background-color: $link-orange;
+    }
+    &.ngfb-note-msg {
+      background-color: yellow;
+    }
+}

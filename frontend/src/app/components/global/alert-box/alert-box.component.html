@@ -1,4 +1,9 @@
-<div class="ngfb-alert" *ngIf="showAlert">
-  <span [class]="'ngfb-alert-msg' + 'ngfb-' + (alertInfo.type) + '-msg'" >{{alertInfo.msg}}</span>
-  <i class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
+<div [class]="'ngfb-alert ' + 'ngfb-' + (alertInfo.type) + '-msg'" *ngIf="showAlert && alertInfo">
+  <div class="ngfb-alert-wrapper">
+    <i [class]="'fa fa-' + (alertInfo.icon)"></i>
+    <span class="ngfb-alert-msg" >{{alertInfo.msg}}</span>
+  </div>
+  <div class="ngfb-close-wrapper">
+    <i class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
+  </div>
 </div>

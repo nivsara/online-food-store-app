@@ -13,6 +13,7 @@ export class FavoriteListComponent implements OnInit {
 
   foods: Food[] = [];
   foodObservable!: Observable<Food[]>;
+  alertMsg: any=null;
 
   constructor(private foodService: FoodService) {
   }
@@ -39,9 +40,17 @@ export class FavoriteListComponent implements OnInit {
     this.foodService.updateFavorite(food).pipe(
       switchMap((response: any) => {
         if (response.updatedFavorite) {
-          alert("You have added this to your favorite list");
+          this.alertMsg = {
+            icon: 'info-circle',
+            type: 'success',
+            msg: 'You have added item to your favorite list'
+          }
         } else {
-          alert("You have removed this from your favorite list");
+          this.alertMsg = {
+            icon: 'info-circle',
+            type: 'success',
+            msg: 'You have removed item from your favorite list'
+          }
         }
         return this.getAllFavFoods();
       })
