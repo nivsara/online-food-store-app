@@ -11,6 +11,8 @@ import { Order } from 'src/app/shared/models/Order';
 export class PaymentComponent implements OnInit {
 
   order: Order = new Order();
+  alertMsg!: any;
+
   constructor(private orderService: OrderService, private router: Router) {
     orderService.getNewOrderForCurrentUser().subscribe({
       next: (order) => {
@@ -23,6 +25,10 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onPaymentSuccess(msg: any) {
+    this.alertMsg = msg;
   }
 
 }

@@ -1,6 +1,7 @@
 <div class="ngfb-page-title">
   <h1>Order Summary</h1>
 </div>
+<alert-box *ngIf="alertMsg" [alertInfo]="alertMsg"></alert-box>
 <div class="ngfb-payment-container">
   <div class="ngfb-payment-wrapper">
     <div class="ngfb-order-summary">
@@ -24,6 +25,6 @@
     <app-map [order]="order" [readonly]="true"></app-map>
   </div>
   <div class="ngfb-button-group">
-    <paypal [order]="order"></paypal>
+    <paypal [order]="order" (onSuccess)="onPaymentSuccess($event)"></paypal>
   </div>
 </div>

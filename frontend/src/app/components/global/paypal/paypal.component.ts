@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { OrderService } from 'src/app/services/order/order.service';
@@ -16,6 +16,8 @@ export class PaypalComponent implements OnInit {
   @Input() order!: Order;
   @ViewChild('paypal', {static: true})
   paypalElement!:ElementRef;
+  alertMsg!: any;
+  @Output() onSuccess = new EventEmitter();
 
   constructor(private orderService: OrderService,
     private router: Router,
@@ -47,7 +49,12 @@ export class PaypalComponent implements OnInit {
             next: (orderId) => {
               this.cartService.clearCart();
               this.cartService.clearAllProductsCart();
-              alert("Payment done successfully");
+              this.alertMsg = {
+                icon: 'info-circle',
+                type: 'success',
+                msg: 'Payment done successfully'
+              }
+              this.onSuccess.emit(this.alertMsg);
               this.zone.run(() => {
                 this.router.navigateByUrl('/track/' + orderId);
               })
